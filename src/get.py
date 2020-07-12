@@ -13,7 +13,7 @@ db = client.get_default_database()["conversation"]
 
 @app.route("/")
 def welcome_():
-    print("Hello to my api")
+    print("Welcome to my api")
 
 @app.route("/chats")
 # return all the different chats in the dataset
@@ -22,7 +22,7 @@ def getChats():
     return dumps(chat_list)
 
 @app.route("/chat/<name>")
-def get_message():
+def get_message(name):
     namereg: re.compile(f"^{name})", re.IGNORECASE)
     user_message = db.find({"user_name":namereg},{"_id":0,"user_name":1,"chat_type":1,"message_text":1})
     if not user_message:
@@ -34,7 +34,7 @@ def get_message():
 @app.route("/messages")
 #return all messages in the dataset
 def getMessages():
-    return dumps(db.find({},{"_id":0}))
+    return dumps(db.find({"message_text"},{"_id":0}))
 
 
 
