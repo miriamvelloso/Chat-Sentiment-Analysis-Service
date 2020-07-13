@@ -10,6 +10,7 @@ from src.errorHandler import APIError, errorHandler
 
 #Connection to Mongo
 client = MongoClient(DBURL)
+print(f"connected to {DBURL}")
 db = client.get_database()["conversation"]
 
 @app_.route("/")
