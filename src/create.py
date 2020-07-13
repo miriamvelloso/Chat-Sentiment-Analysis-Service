@@ -1,10 +1,10 @@
-from src.app import app
 from pymongo import MongoClient
+from app import app_
 from flask import request
-from src.config import DBURL
+from config import DBURL 
 from bson.json_util import dumps
 import re
-from src.errorHandler import APIError, errorHandler
+from errorHandler import APIError, errorHandler
 
 
 
@@ -12,16 +12,19 @@ from src.errorHandler import APIError, errorHandler
 client = MongoClient(DBURL)
 db = client.get_database()["conversation"]
 
-
+@app_.route("/user/create/<username>")
+@errorHandler
 def Createuser(new_username):
     usernames=(db.distinct("user_name")) # get all usernames that exist
     if new_username in usernames:
         raise APIError ("Sorry the username already exists")
     else:
-        username_details={"user_id": new_userid,"user_name":new_username}
+        username_details={"user_name":new_username}
         db.insert_one(username_details)
-        return dumps(f"Sucess! user_id:{new_userid},user_name:{new_username}")
+        return dumps(f"Sucess! user_name :{new_username}")
 
+@app_.route("/chat/create/<chatname>")
+@errorHandler
 # create new chat with users
 def createChats(chatname):
     chats = (db.distinct("chat_type"))
@@ -31,7 +34,8 @@ def createChats(chatname):
         db.insert_one({"chat_type": chatname})
         return f"New chat was created"
 
-
+@app_.route("/chat/<chatname>/adduser/<username>")
+@errorHandler
 #add user to a chat 
 def adduser(chat, username):
     queryuser = db.find({"user_name": username},{'_id':0})
@@ -47,7 +51,8 @@ def adduser(chat, username):
 
 
 #Add message to a chat
-
+@app_.route("/chat/<chatname>/user/<username>/addmessage/<message>")
+@errorHandler
 def addMessage(chatname, username, message):
     queryusers = db.find({"user_name": username},{'_id':0})
     if queryusers.count() == 0:

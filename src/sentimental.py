@@ -1,11 +1,10 @@
 from pymongo import MongoClient
-from src.create import *
-from src.errorHandler import Error404, errorHandler
-from flask import flask
-from src.app import app
+from errorHandler import Error404, errorHandler
+from app import app
 from bson.json_util import dumps
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from config import DBURL
 nltk.download("vader_lexicon")
 
 
@@ -14,6 +13,8 @@ client = MongoClient(DBURL)
 print(f"Connected to {DBURL}")
 db = client.get_default_database()["conversation"]
 
+@app.route("/chat/<chatname>/list")
+@errorHandler
 #Get all mesages
 def GetsMsg(chat_type):
     chat = db.find({"chat_type": chat_type},{"_id":0, "message_text":1})
@@ -23,6 +24,8 @@ def GetsMsg(chat_type):
         print("Success!")
         return dumps(chat)
 
+@app.route("/chat/<chatname>/sentiment")
+@errorHandler
 def sentAnalysis(chat_type):
     quotes= list(db.find({"chat_type": chat_type},{"_id":0, "message_text":1}))
     sentiment = SentimentIntensityAnalyzer().polarity_scores(str(quotes).strip('[]'))

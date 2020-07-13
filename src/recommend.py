@@ -1,15 +1,20 @@
-import pymongo
+from  pymongo import MongoClient
+from config import DBURL
 import pandas as pd
 from scipy.spatial.distance import pdist, squareform
 import scipy.spatial.distance as distance
 from bson.json_util import dumps
-from src.create import *
-from src.errorHandler import errorHandler, Error404
-from flask import Flask, request
-from src.app import app
+import create 
+from errorHandler import errorHandler, Error404
+from app import app_
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 nltk.download("vader_lexicon")
+
+
+#Connection to Mongo
+client = MongoClient(DBURL)
+db = client.get_database()["conversation"]
 
 #Recommend friends based on the sentiments
 def recommendUser(user_name):
