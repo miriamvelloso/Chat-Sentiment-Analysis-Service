@@ -2,6 +2,7 @@ from src.app import app_
 from src.config import PORT 
 import src.create 
 import src.sentimental 
+import src.recommend
 from  src.errorHandler import  errorHandler
  
 

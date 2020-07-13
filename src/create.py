@@ -1,10 +1,10 @@
 from pymongo import MongoClient
-from app import app_
+from src.app  import app_
 from flask import request
-from config import DBURL 
+from src.config import DBURL 
 from bson.json_util import dumps
 import re
-from errorHandler import APIError, errorHandler
+from src.errorHandler import APIError, errorHandler
 
 
 
@@ -12,16 +12,21 @@ from errorHandler import APIError, errorHandler
 client = MongoClient(DBURL)
 db = client.get_database()["conversation"]
 
+@app_.route("/")
+def welcome_():
+    return ("Hello Word!")
+
+
 @app_.route("/user/create/<username>")
 @errorHandler
-def Createuser(new_username):
+def Createuser(username):
     usernames=(db.distinct("user_name")) # get all usernames that exist
-    if new_username in usernames:
+    if username in usernames:
         raise APIError ("Sorry the username already exists")
     else:
-        username_details={"user_name":new_username}
+        username_details={"user_name":f"{username}"}
         db.insert_one(username_details)
-        return dumps(f"Sucess! user_name :{new_username}")
+        return dumps(f"Sucess! user_name :{username}")
 
 @app_.route("/chat/create/<chatname>")
 @errorHandler

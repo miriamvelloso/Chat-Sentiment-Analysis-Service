@@ -1,5 +1,5 @@
 from  pymongo import MongoClient
-from config import DBURL
+from src.config import DBURL
 import pandas as pd
 from scipy.spatial.distance import pdist, squareform
 import scipy.spatial.distance as distance
@@ -17,6 +17,7 @@ client = MongoClient(DBURL)
 db = client.get_database()["conversation"]
 
 #Recommend friends based on the sentiments
+@app_.route("/user/<user_name>/recommend")
 def recommendUser(user_name):
     querynames = list(db.distinct("user_name"))
     lst = []
