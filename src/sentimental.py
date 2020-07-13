@@ -15,7 +15,6 @@ print(f"Connected to {DBURL}")
 db = client.get_default_database()["conversation"]
 
 #Get all mesages
-@app.route("/chat/<chat_type>/list")
 def GetsMsg(chat_type):
     chat = db.find({"chat_type": chat_type},{"_id":0, "message_text":1})
     if not chat_type:
@@ -24,7 +23,6 @@ def GetsMsg(chat_type):
         print("Success!")
         return dumps(chat)
 
-@app.route("/chat/<chat_type>/sentiment")
 def sentAnalysis(chat_type):
     quotes= list(db.find({"chat_type": chat_type},{"_id":0, "message_text":1}))
     sentiment = SentimentIntensityAnalyzer().polarity_scores(str(quotes).strip('[]'))

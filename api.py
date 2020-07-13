@@ -1,6 +1,5 @@
 from src.app import app
 from src.config import PORT
-from  src.get import *
 from  src.create import *
 from  src.sentimental import *
 from  src.errorHandler import errorHandler
@@ -9,7 +8,7 @@ from  src.errorHandler import errorHandler
 @app.route("/user/create/<username>")
 @errorHandler
 def Createuser(username):
-    usuario = createuser(username)
+    usuario = Createuser(username)
     return usuario
 
 #Create chats
@@ -22,22 +21,22 @@ def createchat(chatname):
 #Add user to a chat
 @app.route("/chat/<chatname>/adduser/<username>")
 @errorHandler
-def addUser(chatname, username):
-    add_users = adduser(chatname, username)
+def addUser(chat, username):
+    add_users = adduser(chat,username)
     return add_users
 
 #Add message to a chat
 @app.route("/chat/<chatname>/user/<username>/addmessage/<message>")
 @errorHandler
-def addmessage(chatname, username, message):
-    add_message = addMessage(chatname, username, message)
+def addmessage(chat, username, message):
+    add_message = addMessage(chat, username, message)
     return add_message
 
 #Get all the messages from a chat
 @app.route("/chat/<chatname>/list")
 @errorHandler
 def getchats(chatname):
-    gc = getChats(chatname)
+    gc = GetsMsg(chatname)
     return gc
 
 #Analyze sentiment of a chat
