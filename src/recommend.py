@@ -4,7 +4,6 @@ import pandas as pd
 from scipy.spatial.distance import pdist, squareform
 import scipy.spatial.distance as distance
 from bson.json_util import dumps
-import src.create 
 from src.errorHandler import errorHandler, Error404
 from flask import Flask, request
 from src.app import app_
