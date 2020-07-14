@@ -1,3 +1,5 @@
+![alt text](https://github.com/miriamvelloso/Chat-Sentiment-Analysis-Service/blob/master/images/images.png)
+
 ## Project: Chat-Sentiment-Analysis-Service
 
 # Introducción:
