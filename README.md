@@ -21,8 +21,14 @@ En este archivo, hemos creado una API en Flask. Estos son los puntos finales de 
 **Sentimental analysis `(sentimental.py)`**
 
 Se ha realizado un analisis de sentimientos para los mensajes de un chat especifico. `("/chat//list")`
-Para el analisis del sentimiento de los mensajes en el chat se han clasificado en **mayormente positivos** o **mayormente negativos** y mostrar los detalles, usando el paquete de análisis de sentimiento NLTK. `("/chat//sentimiento")
+Para el analisis del sentimiento de los mensajes en el chat se han clasificado en **mayormente positivos** o **mayormente negativos** y mostrar los detalles, usando el paquete de análisis de sentimiento NLTK. `("/chat//sentimiento")`
 
 
-* 
+**Recommended Analysis**
+
+Esta sección es para recomendar al top tres de amigos de un usuario en base a la similitud de sentimientos.
+
+Recomendar amigos usando un sistema de recomendación con análisis de PNL. ("/usuario//recomendar")
+
+
 
