@@ -31,4 +31,20 @@ Esta sección es para recomendar al top tres de amigos de un usuario en base a l
 Recomendar amigos usando un sistema de recomendación con análisis de PNL. `("/usuario//recomendar")`
 
 
+## References and links
+​
+- [https://flask.palletsprojects.com/]
+- [https://www.getpostman.com/]
+- [https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.insert_one]
+- [https://api.mongodb.com/python/current/tutorial.html]
+- [https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram]
+​
+NLP & Text Sentiment Analysis:
+​
+- [https://www.nltk.org/]
+- [https://towardsdatascience.com/basic-binary-sentiment-analysis-using-nltk-c94ba17ae386]
+- [https://www.digitalocean.com/community/tutorials/how-to-perform-sentiment-analysis-in-python-3-using-the-natural-language-toolkit-nltk]
+
+
+
 
