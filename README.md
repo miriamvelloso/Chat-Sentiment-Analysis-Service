@@ -28,7 +28,7 @@ Para el analisis del sentimiento de los mensajes en el chat se han clasificado e
 
 Esta sección es para recomendar al top tres de amigos de un usuario en base a la similitud de sentimientos.
 
-Recomendar amigos usando un sistema de recomendación con análisis de PNL. ("/usuario//recomendar")
+Recomendar amigos usando un sistema de recomendación con análisis de PNL. `("/usuario//recomendar")
 
 
 
