@@ -8,4 +8,4 @@ simplejson==3.16.0
 regex==2020.2.20
 requests==2.21.0
 scipy
-numpy==1.16.2
+numpy==1.22.0
