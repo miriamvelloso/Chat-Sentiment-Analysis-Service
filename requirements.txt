@@ -6,6 +6,6 @@ nltk==3.5
 jsonschema==3.2.0
 simplejson==3.16.0
 regex==2020.2.20
-requests==2.21.0
+requests==2.31.0
 scipy
 numpy==1.16.2
